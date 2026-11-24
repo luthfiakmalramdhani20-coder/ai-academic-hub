@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Academic Hub</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17.0/dist/browser/index.iife.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0/dist/browser/index.js"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="min-h-screen text-slate-200">
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-20 bg-[#0b1220]/90 backdrop-blur border-b border-slate-800 px-3 sm:px-5 py-3 flex items-center gap-2 sm:gap-3">
+  <button id="brand" class="text-base sm:text-xl font-bold text-white text-left">🎓 AI Academic <span class="text-sky-400">Hub</span></button>
+  <div id="statusBadges" class="hidden lg:flex gap-2 text-xs ml-3"></div>
+  <div class="ml-auto flex items-center gap-2">
+    <button id="userChip" class="hidden px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs sm:text-sm hover:bg-slate-700 max-w-[10rem] truncate" title="Klik untuk keluar"></button>
+    <button id="btnCreator" class="px-3 py-1.5 rounded-lg border text-xs sm:text-sm font-semibold transition">🔒 Mode Kreator</button>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-3 sm:p-5">
+
+  <!-- ============ LANDING ============ -->
+  <section id="view-landing" class="view">
+    <div class="text-center mt-6 sm:mt-12 mb-8">
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white">AI Academic <span class="text-sky-400">Hub</span></h1>
+      <p class="mt-3 text-slate-400 max-w-xl mx-auto">Transkrip, catatan komprehensif, mind map, flashcard, dan kuis dari rekaman kuliah &amp; kegiatan — terpusat dan bisa diakses siapa saja.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+      <button id="btnVisitor" class="card text-left hover:border-emerald-500 transition group">
+        <div class="text-4xl">👀</div>
+        <h2 class="mt-3 text-xl font-bold text-white group-hover:text-emerald-300">Masuk sebagai Pengunjung / Publik</h2>
+        <p class="mt-1 text-sm text-slate-400">Tanpa password. Langsung lihat &amp; belajar dari seluruh arsip yang tersedia.</p>
+        <span class="inline-block mt-4 px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold">Masuk →</span>
+      </button>
+      <div class="card">
+        <div class="flex rounded-lg bg-slate-900 p-1 mb-4" id="authTabs">
+          <button class="auth-tab active flex-1" data-t="login">Login (NIM)</button>
+          <button class="auth-tab flex-1" data-t="daftar">Daftar User Baru</button>
+        </div>
+        <form id="formLogin" class="space-y-3">
+          <input id="loginNim" class="inp" placeholder="NIM" autocomplete="username">
+          <button class="btn-primary w-full">Login</button>
+        </form>
+        <form id="formDaftar" class="space-y-3 hidden">
+          <input id="regNim" class="inp" placeholder="NIM">
+          <input id="regNama" class="inp" placeholder="Nama Lengkap">
+          <input id="regKampus" class="inp" placeholder="Kampus">
+          <input id="regProdi" class="inp" placeholder="Program Studi">
+          <button class="btn-primary w-full">Daftar &amp; Masuk</button>
+        </form>
+        <p id="authMsg" class="mt-3 text-sm text-rose-300 hidden"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOME ============ -->
+  <section id="view-home" class="view hidden">
+    <h2 class="text-2xl font-bold text-white mt-4">Mau mengerjakan apa?</h2>
+    <p class="text-slate-400 text-sm mt-1">Pilih salah satu pintu. Arsip bisa dibuka siapa saja; membuat/mengubah arsip khusus Kreator.</p>
+    <div class="grid md:grid-cols-2 gap-5 mt-6">
+      <button class="card text-left hover:border-sky-500 transition door" data-mode="Kuliah">
+        <div class="text-4xl">🏫</div>
+        <h3 class="mt-3 text-xl font-bold text-white">Transkrip Kegiatan Perkuliahan</h3>
+        <p class="mt-1 text-sm text-slate-400">Semester → Mata Kuliah → Pertemuan ke-, plus Himpunan Catatan &amp; Bahan UTS/UAS.</p>
+        <p class="mt-4 text-sm text-sky-300" id="countKuliah"></p>
+      </button>
+      <button class="card text-left hover:border-emerald-500 transition door" data-mode="Lain">
+        <div class="text-4xl">🎤</div>
+        <h3 class="mt-3 text-xl font-bold text-white">Transkrip Kegiatan Lain</h3>
+        <p class="mt-1 text-sm text-slate-400">Nama Kegiatan → Sesi / Bagian, lengkap dengan arsip &amp; pencarian kegiatan lain.</p>
+        <p class="mt-4 text-sm text-emerald-300" id="countLain"></p>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ MODE (Kuliah / Lain) ============ -->
+  <section id="view-mode" class="view hidden">
+    <div class="flex items-center gap-3 mb-4">
+      <button class="btn-ghost" data-goto="home">← Beranda</button>
+      <h2 id="modeTitle" class="text-xl sm:text-2xl font-bold text-white"></h2>
+    </div>
+    <div class="grid lg:grid-cols-5 gap-5">
+      <div class="lg:col-span-3 space-y-4">
+        <div id="wizard" class="space-y-4"></div>
+        <div id="warnBox" class="hidden rounded-xl border border-rose-600 bg-rose-950/60 p-3 text-sm text-rose-200"></div>
+        <button id="btnGenerate" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-600 to-emerald-600 hover:from-sky-500 hover:to-emerald-500 disabled:opacity-50 font-bold text-white transition">
+          🚀 Generate 6 Tab &amp; Simpan
+        </button>
+        <div id="progressSection" class="hidden card space-y-3">
+          <div id="stepper" class="grid grid-cols-5 gap-1 text-[10px] sm:text-xs text-center"></div>
+          <div class="flex justify-between text-sm">
+            <span id="progressMsg" class="text-slate-200">Menyiapkan...</span>
+            <span id="progressPct" class="text-sky-300 font-mono">0%</span>
+          </div>
+          <div class="h-3 bg-slate-800 rounded-full overflow-hidden">
+            <div id="progressBar" class="h-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-500" style="width:0%"></div>
+          </div>
+          <div id="progressLog" class="text-xs text-slate-400 max-h-40 overflow-y-auto space-y-1 font-mono"></div>
+          <div id="errorBox" class="hidden rounded-lg border border-rose-700 bg-rose-950/50 p-3 text-sm">
+            <div class="font-semibold text-rose-300" id="errorTitle"></div>
+            <pre id="errorDetail" class="mt-2 text-xs text-rose-200 whitespace-pre-wrap break-words"></pre>
+          </div>
+        </div>
+      </div>
+      <aside class="lg:col-span-2">
+        <div class="card lg:sticky lg:top-20">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-white">📚 Arsip</h3>
+            <button id="refreshHistory" class="text-xs text-sky-300 hover:text-sky-200">↻ Muat ulang</button>
+          </div>
+          <input id="historySearch" placeholder="Cari arsip..." class="inp mt-3">
+          <button id="btnHimpunan" class="hidden mt-3 w-full py-2 rounded-lg bg-violet-700/80 hover:bg-violet-600 text-sm font-semibold text-white">📚 Himpunan Catatan &amp; Bahan UTS/UAS</button>
+          <div id="historyList" class="mt-3 max-h-[60vh] overflow-y-auto text-sm"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ RESULT ============ -->
+  <section id="view-result" class="view hidden">
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <button class="btn-ghost" id="btnBackMode">← Kembali ke Arsip</button>
+    </div>
+    <div class="card !p-0">
+      <div class="p-4 sm:p-5 border-b border-slate-800 space-y-3">
+        <div>
+          <h2 id="resultTitle" class="text-xl sm:text-2xl font-bold text-white"></h2>
+          <p id="resultMeta" class="text-xs text-slate-400 mt-1"></p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button id="btnDocx" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-600 to-sky-600 hover:from-emerald-500 hover:to-sky-500 disabled:opacity-60">📥 Download .docx</button>
+          <a id="dlMd" class="btn-dl" href="#">⬇️ .md</a>
+          <a id="dlTxt" class="btn-dl" href="#">⬇️ .txt</a>
+          <button id="btnPrint" class="btn-dl">🖨️ Cetak PDF</button>
+          <span class="mx-1 w-px bg-slate-700 hidden sm:block"></span>
+          <button id="btnRegen" class="btn-dl">🔄 Re-generate 🔒</button>
+          <button id="btnEdit" class="btn-dl">✏️ Edit Catatan 🔒</button>
+          <button id="btnDelete" class="btn-dl !text-rose-300">🗑️ Hapus 🔒</button>
+        </div>
+      </div>
+      <nav class="flex overflow-x-auto border-b border-slate-800 text-sm" id="tabs">
+        <button class="tab active" data-tab="ringkasan">1. 📝 Ringkasan</button>
+        <button class="tab" data-tab="catatan">2. 📖 Catatan 100%</button>
+        <button class="tab" data-tab="mindmap">3. 🧠 Mind Map</button>
+        <button class="tab" data-tab="flashcard">4. 🃏 Flashcard</button>
+        <button class="tab" data-tab="kuis">5. ✅ Kuis</button>
+        <button class="tab" data-tab="transkrip">6. 🎧 Transkrip</button>
+      </nav>
+      <div class="p-4 sm:p-5">
+        <div class="tab-panel prose-dark" id="panel-ringkasan"></div>
+        <div class="tab-panel hidden" id="panel-catatan">
+          <div class="prose-dark" id="catatanView"></div>
+          <div id="catatanEdit" class="hidden">
+            <textarea id="catatanArea" class="inp font-mono text-sm h-[60vh]"></textarea>
+            <div class="flex gap-2 mt-3">
+              <button id="saveEdit" class="btn-primary">💾 Simpan</button>
+              <button id="cancelEdit" class="btn-ghost">Batal</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel hidden" id="panel-mindmap">
+          <div class="flex justify-end mb-2 text-xs"><button id="mmFit" class="btn-dl">⤢ Pas Layar</button></div>
+          <svg id="mindmapSvg" class="w-full h-[70vh] bg-slate-950 rounded-xl border border-slate-800"></svg>
+        </div>
+        <div class="tab-panel hidden" id="panel-flashcard"></div>
+        <div class="tab-panel hidden" id="panel-kuis"></div>
+        <div class="tab-panel hidden" id="panel-transkrip">
+          <div class="flex flex-wrap gap-2 mb-3 items-center">
+            <input id="trSearch" class="inp !w-auto flex-1 min-w-[10rem]" placeholder="🔍 Cari kata di transkrip...">
+            <span id="trCount" class="text-xs text-slate-400"></span>
+            <button id="copyTranscript" class="btn-dl">📋 Salin</button>
+          </div>
+          <pre id="transkripText" class="whitespace-pre-wrap text-sm text-slate-300 bg-slate-950 rounded-xl p-4 border border-slate-800 max-h-[70vh] overflow-y-auto"></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ MODAL PASSWORD KREATOR ============ -->
+<div id="modalCreator" class="modal hidden">
+  <form id="formCreator" class="modal-box">
+    <h3 class="text-lg font-bold text-white">🔒 Mode Kreator</h3>
+    <p id="creatorReason" class="text-sm text-slate-400 mt-1">Fitur ini khusus Kreator. Masukkan password untuk melanjutkan.</p>
+    <input id="creatorPw" type="password" class="inp mt-4" placeholder="Password Kreator" autocomplete="current-password">
+    <p id="creatorErr" class="text-sm text-rose-300 mt-2 hidden"></p>
+    <div class="flex gap-2 mt-4">
+      <button class="btn-primary flex-1">Verifikasi</button>
+      <button type="button" class="btn-ghost" data-close="modalCreator">Batal</button>
+    </div>
+  </form>
+</div>
+
+<!-- ============ MODAL HIMPUNAN ============ -->
+<div id="modalHimpunan" class="modal hidden">
+  <div class="modal-box !max-w-lg">
+    <h3 class="text-lg font-bold text-white">📚 Himpunan Catatan &amp; Bahan UTS/UAS</h3>
+    <p class="text-sm text-slate-400 mt-1">Gabungkan catatan beberapa pertemuan menjadi satu bahan belajar terpadu.</p>
+    <div class="grid grid-cols-2 gap-3 mt-4">
+      <select id="hmSem" class="inp"></select>
+      <select id="hmMk" class="inp"></select>
+    </div>
+    <div class="flex gap-4 mt-3 text-sm">
+      <label><input type="radio" name="hmJenis" value="UTS" checked> UTS</label>
+      <label><input type="radio" name="hmJenis" value="UAS"> UAS</label>
+    </div>
+    <div id="hmList" class="mt-3 max-h-56 overflow-y-auto space-y-1 text-sm"></div>
+    <p id="hmErr" class="text-sm text-rose-300 mt-2 hidden"></p>
+    <div class="flex gap-2 mt-4">
+      <button id="hmGo" class="btn-primary flex-1">Buat Himpunan 🔒</button>
+      <button class="btn-ghost" data-close="modalHimpunan">Batal</button>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

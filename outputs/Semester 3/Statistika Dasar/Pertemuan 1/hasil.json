@@ -1,0 +1,191 @@
+{
+  "metadata": {
+    "kategori": "Kuliah",
+    "semester": "Semester 3",
+    "matkul": "Statistika Dasar",
+    "pertemuan": "Pertemuan 1",
+    "nama_file": "sample.wav"
+  },
+  "dibuat": "2026-11-23 19:09:26",
+  "model": "gemini-3.6-flash",
+  "file_sumber": "media.wav",
+  "ringkasan": "## Ringkasan Kontekstual: Statistika Dasar — Ukuran Pemusatan Data\n\n### Konteks & Tujuan Pembahasan\nPembahasan pada Pertemuan 1 mata kuliah Statistika Dasar ini memfokuskan pada pemahaman dasar mengenai **Ukuran Pemusatan Data** (Measures of Central Tendency). Tujuan utama dari materi ini adalah memberikan landasan konsep bagi mahasiswa agar dapat merangkum, menganalisis, dan menginterpretasikan sekumpulan data numerik melalui satu nilai tunggal yang mewakili titik pusat sebaran data tersebut. Penguasaan konsep ini sangat krusial sebagai fondasi sebelum mempelajari tahapan analisis statistik deskriptif maupun inferensial yang lebih kompleks.\n\n### Poin-Poin Utama\n1. **Mean (Rata-rata Hitung)**: Mean didefinisikan sebagai jumlah dari seluruh nilai data yang ada dibagi dengan banyaknya data tersebut. Formulasi konseptualnya dituliskan sebagai Mean = (Jumlah Seluruh Data) / (Banyaknya Data). Mean memberikan gambaran umum nilai rata-rata keseluruhan sampel atau populasi.\n2. **Median (Nilai Tengah)**: Median adalah nilai yang berada tepat di posisi tengah sekumpulan data setelah data tersebut disusun atau diurutkan berdasarkan urutan nilainya (baik dari terkecil ke terbesar maupun sebaliknya). Urutan data adalah syarat mutlak sebelum menentukan nilai tengah.\n3. **Modus**: Modus merupakan nilai atau data yang paling sering muncul dalam suatu kelompok data, atau dengan kata lain memiliki frekuensi kemunculan terbesar. Data dapat bermodus satu (unimodal), dua (bimodal), banyak (multimodal), atau tidak memiliki modus sama sekali.\n\n### Keterkaitan Antar Konsep\nKetiga ukuran pemusatan data (Mean, Median, dan Modus) saling melengkapi untuk mengidentifikasi karakteristik pusat sebaran data. Mean sangat baik untuk data yang terdistribusi secara simetris, namun sangat sensitif terhadap nilai ekstrem (*outlier*). Sebaliknya, Median bersifat lebih tahan (*robust*) terhadap pencilan karena berpatokan pada posisi data, bukan besaran nilainya. Sementara itu, Modus sangat efektif untuk data kategorikal atau melihat kecenderungan item paling populer.\n\n### Hal yang Perlu Diingat untuk Ujian\n- **Prosedur Median**: Selalu urutkan data terlebih dahulu dari terkecil ke terbesar sebelum menentukan titik tengah.\n- **Sensitivitas Outlier**: Pahami bahwa Mean dipengaruhi nilai ekstrem, sedangkan Median tidak.\n- **Identifikasi Modus**: Modus dicari berdasarkan frekuensi kemunculan tertinggi, bukan berdasarkan nilai angka terbesar.\n- **Tugas Praktis**: Pelajari cara menghitung ketiga ukuran ini untuk dataset kecil (seperti pada tugas rumah 10 data nilai).",
+  "catatan": "# Catatan Perkuliahan: Statistika Dasar — Pertemuan 1\n\n## 1. Pendahuluan\nPerkuliahan diawali dengan salam pembuka dari dosen, dilanjutkan dengan penyampaian topik utama pertemuan pertama, yaitu **Statistika Dasar**. Fokus materi pada pertemuan ini adalah mengenai ukuran pemusatan data yang meliputi **Mean**, **Median**, dan **Modus**.\n\n---\n\n## 2. Ukuran Pemusatan Data\n\n### A. Mean (Rata-rata)\n> **Definisi:** **Mean** atau rata-rata adalah jumlah dari seluruh nilai data yang ada, dibagi dengan banyaknya data tersebut.\n\n* **Formula Konseptual:**\n  $$\\text{Mean} = \\frac{\\text{Jumlah Seluruh Data}}{\\text{Banyaknya Data}}$$\n\n### B. Median (Nilai Tengah)\n> **Definisi:** **Median** adalah nilai tengah dari suatu sekumpulan data setelah data tersebut diurutkan (baik dari yang terkecil ke terbesar maupun sebaliknya).\n\n### C. Modus\n> **Definisi:** **Modus** adalah nilai atau data yang paling sering muncul (memiliki frekuensi kemunculan terbanyak) dalam suatu kelompok data.\n\n---\n\n## 3. Ringkasan Istilah Kunci\n\n| Istilah | Definisi Singkat | Syarat Utama |\n| :--- | :--- | :--- |\n| **Mean** | Rata-rata hitung | Menjumlahkan seluruh nilai lalu membaginya dengan total frekuensi. |\n| **Median** | Nilai posisi tengah | Data **harus diurutkan** terlebih dahulu. |\n| **Modus** | Nilai frekuensi tertinggi | Mencari nilai yang paling sering muncul. |\n\n---\n\n## 4. Tugas dan Pengumuman\n\n* **Tugas Rumah (Dikumpulkan Minggu Depan):**\n  * **Instruksi:** Menghitung nilai **Mean**, **Median**, dan **Modus**.\n  * **Data yang Digunakan:** 10 (sepuluh) data nilai _(kurang jelas di rekaman: kemungkinan 'nilai ujian' atau 'nilai tagihan')_.",
+  "mindmap": "# Statistika Dasar: Ukuran Pemusatan Data\n## Mean (Rata-rata)\n### Definisi\n- Jumlah seluruh nilai dibagi banyaknya data\n### Karakteristik\n- Sensitif terhadap nilai ekstrem\n## Median (Nilai Tengah)\n### Definisi\n- Nilai posisi tengah sekumpulan data\n### Syarat Utama\n- Data wajib diurutkan terlebih dahulu\n### Karakteristik\n- Tahan terhadap nilai ekstrem\n## Modus (Frekuensi Tertinggi)\n### Definisi\n- Nilai yang paling sering muncul\n### Variasi\n- Unimodal bimodal multimodal atau tanpa modus\n## Tugas Rumah\n### Deskripsi\n- Menghitung Mean Median Modus 10 data",
+  "flashcards": [
+    {
+      "depan": "Apa yang dimaksud dengan ukuran pemusatan data?",
+      "belakang": "Nilai tunggal yang mewakili pusat atau titik tengah dari sekumpulan data."
+    },
+    {
+      "depan": "Apa definisi dari Mean?",
+      "belakang": "Rata-rata hitung yang diperoleh dari jumlah seluruh nilai data dibagi dengan banyaknya data."
+    },
+    {
+      "depan": "Bagaimana formula konseptual untuk menghitung Mean?",
+      "belakang": "Mean = Jumlah Seluruh Data / Banyaknya Data."
+    },
+    {
+      "depan": "Apa definisi dari Median?",
+      "belakang": "Nilai tengah dari sekumpulan data yang telah diurutkan."
+    },
+    {
+      "depan": "Apa syarat utama yang wajib dilakukan sebelum mencari nilai Median?",
+      "belakang": "Data harus diurutkan terlebih dahulu dari terkecil ke terbesar (atau sebaliknya)."
+    },
+    {
+      "depan": "Apa definisi dari Modus?",
+      "belakang": "Nilai atau data yang paling sering muncul (memiliki frekuensi tertinggi)."
+    },
+    {
+      "depan": "Apa akibatnya jika tidak mengurutkan data saat menentukan Median?",
+      "belakang": "Nilai tengah yang diperoleh menjadi salah dan tidak valid."
+    },
+    {
+      "depan": "Apa istilah untuk kelompok data yang memiliki dua modus?",
+      "belakang": "Bimodal."
+    },
+    {
+      "depan": "Ukuran pemusatan mana yang paling sensitif terhadap nilai ekstrem (outlier)?",
+      "belakang": "Mean (Rata-rata)."
+    },
+    {
+      "depan": "Ukuran pemusatan mana yang paling tepat untuk data kategorikal?",
+      "belakang": "Modus."
+    },
+    {
+      "depan": "Apakah suatu kelompok data bisa tidak memiliki modus?",
+      "belakang": "Bisa, jika seluruh data memiliki frekuensi kemunculan yang sama."
+    },
+    {
+      "depan": "Apa tugas rumah yang diberikan pada pertemuan pertama?",
+      "belakang": "Menghitung Mean, Median, dan Modus dari 10 data nilai."
+    }
+  ],
+  "kuis": [
+    {
+      "pertanyaan": "Manakah pernyataan yang paling tepat mengenai pengertian Mean?",
+      "pilihan": [
+        "Nilai tengah dari data yang terurut",
+        "Jumlah seluruh data dibagi dengan banyaknya data",
+        "Nilai yang paling banyak muncul dalam populasi",
+        "Selisih antara nilai terbesar dan terkecil"
+      ],
+      "jawaban": 1,
+      "pembahasan": "Mean atau rata-rata hitung diperoleh dengan menjumlahkan seluruh nilai data kemudian membaginya dengan jumlah total data."
+    },
+    {
+      "pertanyaan": "Langkah pertama yang WAJIB dilakukan sebelum menentukan nilai Median adalah...",
+      "pilihan": [
+        "Mengurutkan data dari terkecil ke terbesar",
+        "Menjumlahkan semua angka dalam data",
+        "Mencari angka yang memiliki frekuensi terbanyak",
+        "Membagi jumlah data dengan angka dua"
+      ],
+      "jawaban": 0,
+      "pembahasan": "Median didefinisikan sebagai nilai tengah data TERURUT. Mengurutkan data adalah syarat wajib sebelum mengambil nilai posisi tengah."
+    },
+    {
+      "pertanyaan": "Nilai data yang paling sering muncul atau memiliki frekuensi tertinggi disebut...",
+      "pilihan": [
+        "Mean",
+        "Median",
+        "Modus",
+        "Kuartil"
+      ],
+      "jawaban": 2,
+      "pembahasan": "Modus merupakan nilai atau angka yang frekuensi kemunculannya paling tinggi dibanding nilai lainnya."
+    },
+    {
+      "pertanyaan": "Diberikan sekumpulan data: 4, 8, 6, 2, 10. Berapakah nilai Mean dari data tersebut?",
+      "pilihan": [
+        "5",
+        "8",
+        "6",
+        "30"
+      ],
+      "jawaban": 2,
+      "pembahasan": "Jumlah data = 4 + 8 + 6 + 2 + 10 = 30. Banyak data = 5. Mean = 30 / 5 = 6."
+    },
+    {
+      "pertanyaan": "Berapakah nilai Median dari data: 7, 3, 9, 1, 5?",
+      "pilihan": [
+        "9",
+        "3",
+        "7",
+        "5"
+      ],
+      "jawaban": 3,
+      "pembahasan": "Urutkan data terlebih dahulu: 1, 3, 5, 7, 9. Nilai yang berada di posisi tengah (data ke-3) adalah 5."
+    },
+    {
+      "pertanyaan": "Diberikan data: 5, 3, 7, 5, 9, 5, 2. Berapakah nilai Modusnya?",
+      "pilihan": [
+        "5",
+        "3",
+        "7",
+        "9"
+      ],
+      "jawaban": 0,
+      "pembahasan": "Angka 5 muncul sebanyak 3 kali, paling banyak dibandingkan nilai lainnya."
+    },
+    {
+      "pertanyaan": "Jika suatu himpunan data memiliki dua nilai dengan frekuensi kemunculan tertinggi yang sama, himpunan data tersebut dinamakan...",
+      "pilihan": [
+        "Unimodal",
+        "Bimodal",
+        "Multimodal",
+        "Amodal"
+      ],
+      "jawaban": 1,
+      "pembahasan": "Bimodal merujuk pada sekumpulan data yang memiliki tepat dua modus."
+    },
+    {
+      "pertanyaan": "Manakah ukuran pemusatan data yang nilainya sangat dipengaruhi oleh keberadaan pencilan (outlier)?",
+      "pilihan": [
+        "Modus",
+        "Median",
+        "Mean",
+        "Persentil"
+      ],
+      "jawaban": 2,
+      "pembahasan": "Mean melibatkan seluruh nilai data dalam perhitungannya, sehingga nilai yang sangat besar atau sangat kecil (outlier) akan menyeret nilai rata-rata."
+    },
+    {
+      "pertanyaan": "Berapakah nilai Median dari data genap yang sudah diurutkan berikut: 2, 4, 6, 8?",
+      "pilihan": [
+        "4",
+        "5",
+        "6",
+        "20"
+      ],
+      "jawaban": 1,
+      "pembahasan": "Karena jumlah data genap (4 data), median adalah rata-rata dari dua data di tengah (4 dan 6): (4 + 6) / 2 = 5."
+    },
+    {
+      "pertanyaan": "Berdasarkan catatan perkuliahan Pertemuan 1, tugas rumah dikumpulkan pada...",
+      "pilihan": [
+        "Hari ini juga",
+        "Minggu depan",
+        "Saat ujian akhir semester",
+        "Dua minggu lagi"
+      ],
+      "jawaban": 1,
+      "pembahasan": "Catatan menyebutkan bahwa Tugas Rumah dikumpulkan minggu depan."
+    },
+    {
+      "pertanyaan": "Tugas rumah pertemuan pertama mewajibkan mahasiswa untuk menghitung Mean, Median, dan Modus dari...",
+      "pilihan": [
+        "5 data nilai",
+        "10 data nilai",
+        "20 data nilai",
+        "100 data nilai"
+      ],
+      "jawaban": 1,
+      "pembahasan": "Data yang digunakan pada instruksi tugas rumah terdiri dari 10 data nilai."
+    }
+  ],
+  "materi_teks": "--- Slide 1 ---\nUkuran Pemusatan Data\nMean, Median, Modus",
+  "transkrip": "[00:00:00] Selamat pagi simuan ya.\n[00:00:02] Hari ini kita akan membahas datis taika dasar.\n[00:00:06] Minatala reterata, ya itu jumlah selura data dibayjai banyana data.\n[00:00:12] Median atala niletengah setala data di rutkan.\n[00:00:16] Modus atala nilet yang paling sering munkul.\n[00:00:19] Tugas minggu depan atala mengidu mean, median, dan modus dari sepula datan niletegian.",
+  "arsip_id": "Semester 3/Statistika Dasar/Pertemuan 1"
+}
